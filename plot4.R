@@ -13,16 +13,15 @@ data <- read_csv2("household_power_consumption.txt", na = "?") %>%
 # Setup the plot canvas for 2 rows, 2 columns
 par(mfrow = c(2,2))
 
-dt <- data$datetime
-gap <- data$Global_active_power
-
 # Create the first plot, in topleft position
-plot(dt, gap, type = "l", ylab = "Global Active Power (kilowatts)", xlab = "")
+with(data, plot(datetime, Global_active_power, type = "l",
+                ylab = "Global Active Power (kilowatts)", xlab = ""))
 
 # Create the second plot, in topright position
 with(data, plot(datetime, Voltage, type = "l"))
 
 # Create the third plot, in bottomleft position
+dt <- data$datetime
 plot(dt, data$Sub_metering_1, type = "l", ylab = "Energy sub metering",
      xlab = "", col = "black")
 lines(dt, data$Sub_metering_2, type = "l", col = "red")
