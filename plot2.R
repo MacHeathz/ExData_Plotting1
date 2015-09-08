@@ -2,6 +2,9 @@ library(readr)
 library(dplyr)
 library(lubridate)
 
+# Set locale, needed to get english abbreviated weekdays in the plot
+Sys.setlocale(category = "LC_TIME", locale = "en_US.UTF-8")
+
 data <- read_csv2("household_power_consumption.txt", na = "?") %>%
     filter(Date == "1/2/2007" | Date == "2/2/2007") %>%
     mutate(datetime = dmy_hms(paste(Date, Time))) %>%
