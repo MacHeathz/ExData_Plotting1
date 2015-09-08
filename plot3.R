@@ -13,7 +13,7 @@ data <- read_csv2("household_power_consumption.txt", na = "?") %>%
 dt <- data$datetime
 
 # Plot three Submetering graphs
-plot(dt, data$Sub_metering_1, type = "l", ylab = "Energy submetering",
+plot(dt, data$Sub_metering_1, type = "l", ylab = "Energy sub metering",
      xlab = "", col = "black")
 lines(dt, data$Sub_metering_2, type = "l", col = "red")
 lines(dt, data$Sub_metering_3, type = "l", col = "blue")
