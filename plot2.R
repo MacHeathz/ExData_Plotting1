@@ -2,10 +2,10 @@
 source("load_data.R")
 
 # Plot the second graph
+png(filename = file.path(getwd(), "plot2.png"), width = 480, height = 480)
+
 dt <- data$datetime
 gap <- data$Global_active_power
 plot(dt, gap, type = "l", ylab = "Global Active Power (kilowatts)", xlab = "")
 
-# Save plot to png file
-dev.copy(png, file = "plot2.png", width = 480, height = 480)
 dev.off()

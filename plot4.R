@@ -1,7 +1,8 @@
 # I put all the shared code, for (down)loading data, in a separate file
 source("load_data.R")
 
-# Setup the plot canvas for 2 rows, 2 columns
+# Setup the png device for 2 rows, 2 columns
+png(filename = file.path(getwd(), "plot4.png"), width = 480, height = 480)
 par(mfrow = c(2,2))
 
 # Create the first plot, in topleft position
@@ -24,5 +25,4 @@ legend(x = "topright",
 # Create the fourth plot, in bottomright position
 with(data, plot(datetime, Global_reactive_power, type = "l"))
 
-dev.copy(png, file = "plot4.png", width = 480, height = 480)
 dev.off()
