@@ -5,6 +5,7 @@ library(lubridate)
 # Set locale, needed to get english abbreviated weekdays in the plot
 Sys.setlocale(category = "LC_TIME", locale = "en_US.UTF-8")
 
+# Read and filter the data, and construct datetime column from the Date and Time
 data <- read_csv2("household_power_consumption.txt", na = "?") %>%
     filter(Date == "1/2/2007" | Date == "2/2/2007") %>%
     mutate(datetime = dmy_hms(paste(Date, Time))) %>%
@@ -20,7 +21,7 @@ with(data, plot(datetime, Global_active_power, type = "l",
 # Create the second plot, in topright position
 with(data, plot(datetime, Voltage, type = "l"))
 
-# Create the third plot, in bottomleft position
+# Create the third plot, in bottomleft position, with legend
 dt <- data$datetime
 plot(dt, data$Sub_metering_1, type = "l", ylab = "Energy sub metering",
      xlab = "", col = "black")
