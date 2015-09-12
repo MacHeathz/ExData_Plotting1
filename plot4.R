@@ -1,8 +1,10 @@
-# I put all the shared code, for (down)loading data, in a separate file
+# I don't like repeating myself, especially not in code. So I put all
+# the shared code, for (down)loading data, in a separate file.
+# A dataframe 'data' is loaded with the data.
 source("load_data.R")
 
-# Setup the png device for 2 rows, 2 columns
-png(filename = file.path(getwd(), "plot4.png"), width = 480, height = 480)
+# Setup the png device for 2 rows, 2 columns. 
+png(filename = "plot4.png", width = 480, height = 480)
 par(mfrow = c(2,2))
 
 # Create the first plot, in topleft position
@@ -25,4 +27,5 @@ legend(x = "topright",
 # Create the fourth plot, in bottomright position
 with(data, plot(datetime, Global_reactive_power, type = "l"))
 
+# Close the png device
 dev.off()
